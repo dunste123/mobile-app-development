@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.779
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShittyCSharpApp.Android", "ShittyCSharpApp\ShittyCSharpApp.Android\ShittyCSharpApp.Android.csproj", "{4E99DC32-5CD9-47DE-A9B7-5ED1BED66409}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShittyCSharpApp.Android", "ShittyCSharpApp.Android\ShittyCSharpApp.Android.csproj", "{4E99DC32-5CD9-47DE-A9B7-5ED1BED66409}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShittyCSharpApp.iOS", "ShittyCSharpApp\ShittyCSharpApp.iOS\ShittyCSharpApp.iOS.csproj", "{CC739C64-3FE8-4FBA-9AC8-EB99C2E20AD9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShittyCSharpApp.iOS", "ShittyCSharpApp.iOS\ShittyCSharpApp.iOS.csproj", "{CC739C64-3FE8-4FBA-9AC8-EB99C2E20AD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShittyCSharpApp", "ShittyCSharpApp\ShittyCSharpApp\ShittyCSharpApp.csproj", "{DC2D1A55-EC02-4EDF-BA9C-581A6267D6FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShittyCSharpApp", "ShittyCSharpApp\ShittyCSharpApp.csproj", "{DC2D1A55-EC02-4EDF-BA9C-581A6267D6FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
