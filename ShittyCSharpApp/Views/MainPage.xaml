@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShittyCSharpApp.Views.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Slider">
+                <Setter Property="Maximum" Value="255" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="Popup" FontSize="10"
+                        Grid.Row="0" Grid.Column="0" Clicked="BtnPopupClickedDSte" />
+
+                <BoxView x:Name="colorDSte" BindingContext="{x:Reference opacitySliderDSte}"
+                         Grid.Row="1" Grid.Column="0" 
+                         Color="Black" Opacity="{Binding Value}" />
+
+                <Entry Text="rgba(0, 0, 0, 1)" TextChanged="ColorTextChangedDSte"
+                       x:Name="rgbaFieldDSte" Grid.Row="2" Grid.Column="0" />
+            </Grid>
+
+            <Label Text="Red" />
+            <Slider x:Name="redSliderDSte" ValueChanged="ColorSliderChangeDSte"
+                    MaximumTrackColor="LightPink" MinimumTrackColor="DeepPink" />
+
+            <Label Text="Green" />
+            <Slider x:Name="greenSliderDSte" ValueChanged="ColorSliderChangeDSte"
+                    MaximumTrackColor="LightPink" MinimumTrackColor="DeepPink" />
+
+            <Label Text="Blue" />
+            <Slider x:Name="blueSliderDSte" ValueChanged="ColorSliderChangeDSte"
+                    MaximumTrackColor="LightPink" MinimumTrackColor="DeepPink" />
+
+            <Label Text="Opacity" />
+            <Slider x:Name="opacitySliderDSte" ValueChanged="ColorSliderChangeDSte"
+                    Maximum="1" Value="1"
+                    MaximumTrackColor="LightPink" MinimumTrackColor="DeepPink" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ShittyCSharpApp.Views"
+             x:Class="ShittyCSharpApp.Views.AnimalPage">
+
+    <StackLayout>
+        <Picker VerticalOptions="CenterAndExpand" SelectedIndexChanged="Picker_SelectedIndexChanged" x:Name="ApiDropdown"/>
+        <Button Clicked="Button_Clicked" Text="Click for a new image" HorizontalOptions="Center"
+                VerticalOptions="CenterAndExpand"/>
+
+
+        <Image Source="https://cdn.duncte123.me/pnXTWOrbbp"
+               x:Name="animal"
+               HorizontalOptions="Center"
+               VerticalOptions="CenterAndExpand"/>
+    </StackLayout>
+
+</ContentPage>

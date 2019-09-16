@@ -12,7 +12,7 @@ namespace ShittyCSharpApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new TabsPage();
         }
 
         protected override void OnStart()
