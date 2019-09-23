@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ShittyCSharpApp.Views.Tabs.List"
+             x:Class="ShittyCSharpApp.Views.Tabs.List.ListViewPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView SelectionMode="None" x:Name="ListBasicDSte">
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>mono</x:String>
+                        <x:String>monodroid</x:String>
+                        <x:String>monotouch</x:String>
+                    </x:Array>
+                </ListView.ItemsSource>
+            </ListView>
+
+            <ListView SelectionMode="None" x:Name="ListImagesDSte">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell Text="{Binding Text}" Detail="{Binding Detail}" ImageSource="{Binding Image}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ListView SelectionMode="None" x:Name="ListCustomDSte">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <local:CustomListCell Text="{Binding Text}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

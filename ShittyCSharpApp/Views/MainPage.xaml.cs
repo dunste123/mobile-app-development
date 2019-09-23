@@ -20,7 +20,7 @@ namespace ShittyCSharpApp.Views
         {
             InitializeComponent();
 
-            this.Title = "Main";
+            this.Title = "Color Mixer";
         }
 
         private async void BtnPopupClickedDSte(object sender, EventArgs e)

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ShittyCSharpApp.Views.Tabs.Images;
+using ShittyCSharpApp.Views.Tabs.List;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,12 +16,14 @@ namespace ShittyCSharpApp.Views
     {
 		public TabsPage ()
 		{
-			InitializeComponent();
+            InitializeComponent();
 
-            this.Title = "TabbedPage";
+            this.Title = "Images'n stuff";
 
-            this.Children.Add(new MainPage());
-            this.Children.Add(new AnimalPage());
+            this.Children.Add(new ListViewPage());
+            this.Children.Add(new AspectFitPage());
+            this.Children.Add(new AspectFillPage());
+            this.Children.Add(new FillPage());
         }
 	}
 }

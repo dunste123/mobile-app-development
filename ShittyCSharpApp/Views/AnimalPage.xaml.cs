@@ -33,6 +33,9 @@ namespace ShittyCSharpApp.Views
 
             ApiDropdown.ItemsSource = apis;
             ApiDropdown.SelectedIndex = 0;
+
+            ActivityDSte.SetBinding(ActivityIndicator.IsRunningProperty, "IsLoading");
+            ActivityDSte.BindingContext = animal;
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
@@ -41,6 +44,8 @@ namespace ShittyCSharpApp.Views
             var response = await client.GetStringAsync($"https://apis.duncte123.me/animal/{selectedApi}");
             JObject obj = JObject.Parse(response);
             var imgUrl = (string)obj.SelectToken("data.file");
+
+            Console.WriteLine(imgUrl);
 
             animal.Source = imgUrl;
         }

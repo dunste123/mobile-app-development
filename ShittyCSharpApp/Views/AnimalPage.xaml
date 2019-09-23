@@ -14,6 +14,12 @@
                x:Name="animal"
                HorizontalOptions="Center"
                VerticalOptions="CenterAndExpand"/>
+
+        <ActivityIndicator x:Name="ActivityDSte" 
+                       Color="Blue"  
+                       BackgroundColor="Transparent"
+                       HorizontalOptions="Center"
+                       VerticalOptions="CenterAndExpand" />
     </StackLayout>
 
 </ContentPage>

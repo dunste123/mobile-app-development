@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ShittyCSharpApp.Views;
+using ShittyCSharpApp.Views.Menu;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace ShittyCSharpApp
@@ -12,7 +13,7 @@ namespace ShittyCSharpApp
         {
             InitializeComponent();
 
-            MainPage = new TabsPage();
+            MainPage = new SideMenu();
         }
 
         protected override void OnStart()
