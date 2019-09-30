@@ -19,8 +19,8 @@ namespace ShittyCSharpApp.Views.Tabs.List
             this.Title = "Lists";
 
             ListImagesDSte.ItemsSource = new[] {
-                new ImageDataSource { Text = "Hello", Detail = "World", Image = "https://d1q6f0aelx0por.cloudfront.net/product-logos/5431a80b-9ab9-486c-906a-e3d4b5ccaa96-hello-world.png" },
-                new ImageDataSource { Text = "Tomatoes", Detail = "Color: Red", Image = "https://bonaprezo.awery.com/system/downloads/cake_product_file.php?file_id=578&thumb=1" }
+                new ImageDataSourceDSte { Text = "Hello", Detail = "World", Image = "https://d1q6f0aelx0por.cloudfront.net/product-logos/5431a80b-9ab9-486c-906a-e3d4b5ccaa96-hello-world.png" },
+                new ImageDataSourceDSte { Text = "Tomatoes", Detail = "Color: Red", Image = "https://bonaprezo.awery.com/system/downloads/cake_product_file.php?file_id=578&thumb=1" }
             };
 
             ListCustomDSte.ItemsSource = new[] {
@@ -31,7 +31,7 @@ namespace ShittyCSharpApp.Views.Tabs.List
         }
 
 
-        private class ImageDataSource
+        private class ImageDataSourceDSte
         {
             public string Image { get; set; }
             public string Text { get; set; }
