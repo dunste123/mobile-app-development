@@ -38,7 +38,7 @@ namespace ShittyCSharpApp.Views
             ActivityDSte.BindingContext = animal;
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private async void Button_ClickedDSte(object sender, EventArgs e)
         {
             HttpClient client = new HttpClient();
             var response = await client.GetStringAsync($"https://apis.duncte123.me/animal/{selectedApi}");
@@ -50,7 +50,7 @@ namespace ShittyCSharpApp.Views
             animal.Source = imgUrl;
         }
 
-        private void Picker_SelectedIndexChanged(object sender, EventArgs e)
+        private void Picker_SelectedIndexChangedDSte(object sender, EventArgs e)
         {
             var picker = (Picker)sender;
             var index = picker.SelectedIndex;
