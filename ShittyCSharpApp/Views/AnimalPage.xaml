@@ -5,13 +5,13 @@
              x:Class="ShittyCSharpApp.Views.AnimalPage">
 
     <StackLayout>
-        <Picker VerticalOptions="CenterAndExpand" SelectedIndexChanged="Picker_SelectedIndexChangedDSte" x:Name="ApiDropdown"/>
+        <Picker VerticalOptions="CenterAndExpand" SelectedIndexChanged="Picker_SelectedIndexChangedDSte" x:Name="ApiDropdownDSte"/>
         <Button Clicked="Button_ClickedDSte" Text="Click for a new image" HorizontalOptions="Center"
                 VerticalOptions="CenterAndExpand"/>
 
 
         <Image Source="https://cdn.duncte123.me/pnXTWOrbbp"
-               x:Name="animal"
+               x:Name="animalDSte"
                HorizontalOptions="Center"
                VerticalOptions="CenterAndExpand"/>
 

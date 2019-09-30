@@ -31,11 +31,11 @@ namespace ShittyCSharpApp.Views
 
             selectedApi = apis[0];
 
-            ApiDropdown.ItemsSource = apis;
-            ApiDropdown.SelectedIndex = 0;
+            ApiDropdownDSte.ItemsSource = apis;
+            ApiDropdownDSte.SelectedIndex = 0;
 
             ActivityDSte.SetBinding(ActivityIndicator.IsRunningProperty, "IsLoading");
-            ActivityDSte.BindingContext = animal;
+            ActivityDSte.BindingContext = animalDSte;
         }
 
         private async void Button_ClickedDSte(object sender, EventArgs e)
@@ -47,7 +47,7 @@ namespace ShittyCSharpApp.Views
 
             Console.WriteLine(imgUrl);
 
-            animal.Source = imgUrl;
+            animalDSte.Source = imgUrl;
         }
 
         private void Picker_SelectedIndexChangedDSte(object sender, EventArgs e)
