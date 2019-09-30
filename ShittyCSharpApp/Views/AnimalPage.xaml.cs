@@ -31,21 +31,21 @@ namespace ShittyCSharpApp.Views
 
             selectedApi = apis[0];
 
-            ApiDropdown.ItemsSource = apis;
-            ApiDropdown.SelectedIndex = 0;
+            ApiDropdownDSte.ItemsSource = apis;
+            ApiDropdownDSte.SelectedIndex = 0;
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private async void Button_ClickedDSte(object sender, EventArgs e)
         {
             HttpClient client = new HttpClient();
             var response = await client.GetStringAsync($"https://apis.duncte123.me/animal/{selectedApi}");
             JObject obj = JObject.Parse(response);
             var imgUrl = (string)obj.SelectToken("data.file");
 
-            animal.Source = imgUrl;
+            animalDSte.Source = imgUrl;
         }
 
-        private void Picker_SelectedIndexChanged(object sender, EventArgs e)
+        private void Picker_SelectedIndexChangedDSte(object sender, EventArgs e)
         {
             var picker = (Picker)sender;
             var index = picker.SelectedIndex;
