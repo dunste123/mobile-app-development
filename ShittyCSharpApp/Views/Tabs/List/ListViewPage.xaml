@@ -26,7 +26,7 @@
             <ListView SelectionMode="None" x:Name="ListCustomDSte">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <local:CustomListCell Text="{Binding Text}" />
+                        <local:CustomListCellDSte Text="{Binding Text}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

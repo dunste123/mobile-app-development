@@ -10,12 +10,12 @@ using Xamarin.Forms.Xaml;
 namespace ShittyCSharpApp.Views.Tabs.List
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CustomListCell : ViewCell
+	public partial class CustomListCellDSte : ViewCell
 	{
         public static readonly BindableProperty TextProperty =
-            BindableProperty.Create("Text", typeof(string), typeof(CustomListCell), "Text");
+            BindableProperty.Create("Text", typeof(string), typeof(CustomListCellDSte), "Text");
 
-        public CustomListCell ()
+        public CustomListCellDSte   ()
 		{
 			InitializeComponent ();
 		}

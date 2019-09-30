@@ -15,6 +15,7 @@ namespace ShittyCSharpApp.Views
     {
         private readonly string regexDSte = @"rgba\(([0-9]+), ([0-9]+), ([0-9]+), ([0-9\.]+)\)";
         private bool isUpdatingDSte = false;
+        private bool lockedDSte = false;
 
         public MainPage()
         {
@@ -41,7 +42,7 @@ namespace ShittyCSharpApp.Views
 
         private void ColorSliderChangeDSte(object sender, EventArgs e)
         {
-            if (isUpdatingDSte)
+            if (isUpdatingDSte || lockedDSte)
             {
                 return;
             }
@@ -62,7 +63,7 @@ namespace ShittyCSharpApp.Views
 
         private void ColorTextChangedDSte(object sender, EventArgs e)
         {
-            if (isUpdatingDSte)
+            if (isUpdatingDSte || lockedDSte)
             {
                 return;
             }
@@ -95,6 +96,11 @@ namespace ShittyCSharpApp.Views
             var blue = (int)blueSliderDSte.Value;
 
             colorDSte.Color = Color.FromRgb(red, green, blue);
+        }
+
+        private void CbLockDSte_CheckedChangedDSte(object sender, CheckedChangedEventArgs e)
+        {
+            lockedDSte = cbLockDSte.IsChecked;
         }
     }
 }

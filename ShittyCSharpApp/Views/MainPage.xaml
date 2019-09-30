@@ -31,6 +31,9 @@
                        x:Name="rgbaFieldDSte" Grid.Row="2" Grid.Column="0" />
             </Grid>
 
+            <Label Text="Lock" />
+            <CheckBox x:Name="cbLockDSte" CheckedChanged="CbLockDSte_CheckedChangedDSte" />
+
             <Label Text="Red" />
             <Slider x:Name="redSliderDSte" ValueChanged="ColorSliderChangeDSte"
                     MaximumTrackColor="LightPink" MinimumTrackColor="DeepPink" />
