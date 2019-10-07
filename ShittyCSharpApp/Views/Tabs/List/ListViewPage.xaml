@@ -18,7 +18,7 @@
             <ListView SelectionMode="None" x:Name="ListImagesDSte">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ImageCell Text="{Binding Text}" Detail="{Binding Detail}" ImageSource="{Binding Image}" />
+                        <ImageCell Text="{Binding Text}" Detail="{Binding Detail}" ImageSource="{Binding ImageSource}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Net.Http;
+using System.IO;
 using Xamarin.Forms;
 
 namespace ShittyCSharpApp.Views
@@ -36,18 +36,23 @@ namespace ShittyCSharpApp.Views
 
             ActivityDSte.SetBinding(ActivityIndicator.IsRunningProperty, "IsLoading");
             ActivityDSte.BindingContext = animalDSte;
+
+            imageBtnDSte.Source = ImageSource.FromResource("ShittyCSharpApp.Assets.Img.wood_button.png");
+
+            animalDSte.Source = ImageSource.FromStream(() => GetImageStreamDSte("https://cdn.duncte123.me/pnXTWOrbbp"));
         }
 
         private async void Button_ClickedDSte(object sender, EventArgs e)
         {
-            HttpClient client = new HttpClient();
-            var response = await client.GetStringAsync($"https://apis.duncte123.me/animal/{selectedApi}");
+            Console.WriteLine($"https://apis.duncte123.me/animal/{selectedApi}");
+
+            var response = await WebStuff.GetStringDSte($"https://apis.duncte123.me/animal/{selectedApi}");
             JObject obj = JObject.Parse(response);
             var imgUrl = (string)obj.SelectToken("data.file");
 
             Console.WriteLine(imgUrl);
 
-            animalDSte.Source = imgUrl;
+            animalDSte.Source = ImageSource.FromStream(() => GetImageStreamDSte(imgUrl));
         }
 
         private void Picker_SelectedIndexChangedDSte(object sender, EventArgs e)
@@ -64,6 +69,11 @@ namespace ShittyCSharpApp.Views
                 selectedApi = apis[index];
             }
 
+        }
+
+        private Stream GetImageStreamDSte(string url)
+        {
+            return WebStuff.GetStreamSyncDSte(url);
         }
     }
 }

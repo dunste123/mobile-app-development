@@ -52,6 +52,7 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
 	<EmbeddedResource Include="Assets\Img\cat2.jpg" />
+	<EmbeddedResource Include="Assets\Img\wood_button.png" />
   </ItemGroup>
 
   <ItemGroup>

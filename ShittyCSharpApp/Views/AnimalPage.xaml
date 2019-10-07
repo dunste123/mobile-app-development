@@ -6,14 +6,16 @@
 
     <StackLayout>
         <Picker VerticalOptions="CenterAndExpand" SelectedIndexChanged="Picker_SelectedIndexChangedDSte" x:Name="ApiDropdownDSte"/>
-        <Button Clicked="Button_ClickedDSte" Text="Click for a new image" HorizontalOptions="Center"
-                VerticalOptions="CenterAndExpand"/>
+        <ImageButton x:Name="imageBtnDSte" Clicked="Button_ClickedDSte" HorizontalOptions="End"/>
 
 
-        <Image Source="https://cdn.duncte123.me/pnXTWOrbbp"
-               x:Name="animalDSte"
+        <Frame Padding="0" CornerRadius="50"
+               BackgroundColor="#CE2029"
                HorizontalOptions="Center"
-               VerticalOptions="CenterAndExpand"/>
+               VerticalOptions="Center"
+               IsClippedToBounds="True">
+            <Image Source="" x:Name="animalDSte" Aspect="AspectFit"/>
+        </Frame>
 
         <ActivityIndicator x:Name="ActivityDSte" 
                        Color="Blue"  
