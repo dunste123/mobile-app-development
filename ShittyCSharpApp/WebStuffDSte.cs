@@ -18,7 +18,7 @@ namespace ShittyCSharpApp
             return GetStreamDSte(url).GetAwaiter().GetResult();
         }
 
-        private static async Task<Stream> GetStreamDSte(string url)
+        public static async Task<Stream> GetStreamDSte(string url)
         {
             return await ClientDSte.GetStreamAsync(url);
         }

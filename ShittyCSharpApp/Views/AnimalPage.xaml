@@ -5,10 +5,12 @@
              x:Class="ShittyCSharpApp.Views.AnimalPage">
 
     <StackLayout>
-        <Picker VerticalOptions="CenterAndExpand" SelectedIndexChanged="Picker_SelectedIndexChangedDSte" x:Name="ApiDropdownDSte"/>
-        <ImageButton x:Name="ImageBtnDSte" Clicked="Button_ClickedDSte" HorizontalOptions="CenterAndExpand"/>
-
-
+        <Picker VerticalOptions="Start" HorizontalOptions="Fill" 
+                SelectedIndexChanged="Picker_SelectedIndexChangedDSte" x:Name="ApiDropdownDSte"
+                ItemsSource="{Binding ApisDSte}"
+                SelectedIndex="{Binding SelectedApiIndex}"/>
+        <ImageButton x:Name="ImageBtnDSte" Clicked="Button_ClickedDSte" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"/>
+        
         <Frame Padding="0" CornerRadius="50"
                BackgroundColor="#CE2029"
                HorizontalOptions="Center"
@@ -23,5 +25,4 @@
                        HorizontalOptions="Center"
                        VerticalOptions="CenterAndExpand" />
     </StackLayout>
-
 </ContentPage>

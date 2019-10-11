@@ -1,14 +1,13 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using Newtonsoft.Json.Linq;
 using Xamarin.Forms;
 
 namespace ShittyCSharpApp.Views
 {
     public partial class AnimalPage : ContentPage
     {
-        public List<string> apis = new List<string> {
+        public List<string> ApisDSte { get; } = new List<string> {
             "llama",
             "cat",
             "duck",
@@ -20,39 +19,39 @@ namespace ShittyCSharpApp.Views
             "lizard"
         };
 
+        public string SelectedApi { get; set; } = "llama";
 
-        string selectedApi;
+        public int SelectedApiIndex => this.ApisDSte.IndexOf(this.SelectedApi);
 
         public AnimalPage()
         {
+            this.BindingContext = this;
+            
             InitializeComponent();
 
             this.Title = "Animals";
 
-            selectedApi = apis[0];
+            this.ActivityDSte.SetBinding(ActivityIndicator.IsRunningProperty, "IsLoading");
+            this.ActivityDSte.BindingContext = AnimalDSte;
 
-            ApiDropdownDSte.ItemsSource = apis;
-            ApiDropdownDSte.SelectedIndex = 0;
-
-            ActivityDSte.SetBinding(ActivityIndicator.IsRunningProperty, "IsLoading");
-            ActivityDSte.BindingContext = AnimalDSte;
-
-            ImageBtnDSte.Source = ImageSource.FromResource("ShittyCSharpApp.Assets.Img.wood_button.png");
-
-            AnimalDSte.Source = ImageSource.FromStream(() => GetImageStreamDSte("https://cdn.duncte123.me/pnXTWOrbbp"));
+            this.ImageBtnDSte.Source = ImageSource.FromResource("ShittyCSharpApp.Assets.Img.wood_button.png");
+            
+            LoadImageDSte("https://cdn.duncte123.me/pnXTWOrbbp");
         }
 
         private async void Button_ClickedDSte(object sender, EventArgs e)
         {
-            Console.WriteLine($"https://apis.duncte123.me/animal/{selectedApi}");
+            var apiEndpoint = $"https://apis.duncte123.me/animal/{SelectedApi}";
+            
+            Console.WriteLine(apiEndpoint);
 
-            var response = await WebStuffDSte.GetStringDSte($"https://apis.duncte123.me/animal/{selectedApi}");
-            JObject obj = JObject.Parse(response);
-            var imgUrl = (string)obj.SelectToken("data.file");
+            var response = await WebStuffDSte.GetStringDSte(apiEndpoint);
+            var obj = JObject.Parse(response);
+            var imgUrl = obj.SelectToken("data.file").ToString();
 
             Console.WriteLine(imgUrl);
 
-            AnimalDSte.Source = ImageSource.FromStream(() => GetImageStreamDSte(imgUrl));
+            this.LoadImageDSte(imgUrl);
         }
 
         private void Picker_SelectedIndexChangedDSte(object sender, EventArgs e)
@@ -60,20 +59,13 @@ namespace ShittyCSharpApp.Views
             var picker = (Picker)sender;
             var index = picker.SelectedIndex;
 
-            if (index == -1)
-            {
-                selectedApi = apis[0];
-            }
-            else
-            {
-                selectedApi = apis[index];
-            }
-
+            this.SelectedApi = index == -1 ? this.ApisDSte[0] : this.ApisDSte[index];
         }
 
-        private Stream GetImageStreamDSte(string url)
+        private async void LoadImageDSte(string url)
         {
-            return WebStuffDSte.GetStreamSyncDSte(url);
+            var stream = await WebStuffDSte.GetStreamDSte(url);
+            this.AnimalDSte.Source = ImageSource.FromStream(() => stream);
         }
     }
 }
