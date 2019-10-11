@@ -46,7 +46,7 @@ namespace ShittyCSharpApp.Views
         {
             Console.WriteLine($"https://apis.duncte123.me/animal/{selectedApi}");
 
-            var response = await WebStuff.GetStringDSte($"https://apis.duncte123.me/animal/{selectedApi}");
+            var response = await WebStuffDSte.GetStringDSte($"https://apis.duncte123.me/animal/{selectedApi}");
             JObject obj = JObject.Parse(response);
             var imgUrl = (string)obj.SelectToken("data.file");
 
@@ -73,7 +73,7 @@ namespace ShittyCSharpApp.Views
 
         private Stream GetImageStreamDSte(string url)
         {
-            return WebStuff.GetStreamSyncDSte(url);
+            return WebStuffDSte.GetStreamSyncDSte(url);
         }
     }
 }

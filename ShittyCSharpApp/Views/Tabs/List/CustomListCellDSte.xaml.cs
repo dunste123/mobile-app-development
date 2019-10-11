@@ -22,8 +22,8 @@ namespace ShittyCSharpApp.Views.Tabs.List
 
         public string Text
         {
-            get { return (string)GetValue(TextProperty); }
-            set { SetValue(TextProperty, value); }
+            get => (string)GetValue(TextProperty);
+            set => SetValue(TextProperty, value);
         }
 
         protected override void OnBindingContextChanged()

@@ -37,7 +37,7 @@ namespace ShittyCSharpApp.Views.Tabs.List
 
             public ImageSource ImageSource
             {
-                get => ImageSource.FromStream(() => WebStuff.GetStreamSyncDSte(this.Image));
+                get => ImageSource.FromStream(() => WebStuffDSte.GetStreamSyncDSte(this.Image));
                 set {}
             }
 

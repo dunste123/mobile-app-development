@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ShittyCSharpApp
 {
-    class WebStuff
+    internal static class WebStuffDSte
     {
-        private static HttpClient ClientDSte = new HttpClient();
+        private static readonly HttpClient ClientDSte = new HttpClient();
 
         public static void InitDSte()
         {
@@ -21,7 +18,7 @@ namespace ShittyCSharpApp
             return GetStreamDSte(url).GetAwaiter().GetResult();
         }
 
-        public static async Task<Stream> GetStreamDSte(string url)
+        private static async Task<Stream> GetStreamDSte(string url)
         {
             return await ClientDSte.GetStreamAsync(url);
         }

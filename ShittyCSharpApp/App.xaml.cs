@@ -13,7 +13,7 @@ namespace ShittyCSharpApp
         {
             InitializeComponent();
 
-            WebStuff.InitDSte();
+            WebStuffDSte.InitDSte();
 
             MainPage = new SideMenu();
         }
