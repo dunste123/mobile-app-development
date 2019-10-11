@@ -13,9 +13,9 @@ namespace ShittyCSharpApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
-        private readonly string regexDSte = @"rgba\(([0-9]+), ([0-9]+), ([0-9]+), ([0-9\.]+)\)";
-        private bool isUpdatingDSte = false;
-        private bool lockedDSte = false;
+        private const string RegexDSte = @"rgba\(([0-9]+), ([0-9]+), ([0-9]+), ([0-9\.]+)\)";
+        private bool _isUpdatingDSte = false;
+        private bool _lockedDSte = false;
 
         public MainPage()
         {
@@ -29,78 +29,71 @@ namespace ShittyCSharpApp.Views
             var ret = await DisplayAlert("Would you look at that", "It's an alert", "Ok", "Cancel");
 
 #pragma warning disable CS4014
-            if (ret)
-            {
-                DisplayAlert("Result", "You pressed Ok", "Ok");
-            }
-            else
-            {
-                DisplayAlert("Result", "You pressed Cancel", "Ok");
-            }
+            DisplayAlert("Result", ret ? "You pressed Ok" : "You pressed Cancel", "Ok");
 #pragma warning restore CS4014
         }
 
         private void ColorSliderChangeDSte(object sender, EventArgs e)
         {
-            if (isUpdatingDSte || lockedDSte)
+            if (_isUpdatingDSte || _lockedDSte)
             {
                 return;
             }
 
-            isUpdatingDSte = true;
+            _isUpdatingDSte = true;
 
-            var red = (int)redSliderDSte.Value;
-            var green = (int)greenSliderDSte.Value;
-            var blue = (int)blueSliderDSte.Value;
-            var op = opacitySliderDSte.Value;
+            var red = (int)RedSliderDSte.Value;
+            var green = (int)GreenSliderDSte.Value;
+            var blue = (int)BlueSliderDSte.Value;
+            var op = OpacitySliderDSte.Value;
 
-            rgbaFieldDSte.Text = $"rgba({red}, {green}, {blue}, {op})";
+            RgbaFieldDSte.Text = $"rgba({red}, {green}, {blue}, {op})";
 
             UpdateColorDisplayDSte();
 
-            isUpdatingDSte = false;
+            _isUpdatingDSte = false;
         }
 
         private void ColorTextChangedDSte(object sender, EventArgs e)
         {
-            if (isUpdatingDSte || lockedDSte)
+            if (_isUpdatingDSte || _lockedDSte)
             {
                 return;
             }
 
-            isUpdatingDSte = true;
+            _isUpdatingDSte = true;
 
-            var value = rgbaFieldDSte.Text;
+            var value = RgbaFieldDSte.Text;
 
-            if (Regex.IsMatch(value, regexDSte))
+            if (Regex.IsMatch(value, RegexDSte))
             {
-                var match = Regex.Match(value, regexDSte);
+                var match = Regex.Match(value, RegexDSte);
                 var groups = match.Groups;
 
-                redSliderDSte.Value = int.Parse(groups[1].ToString());
-                greenSliderDSte.Value = int.Parse(groups[2].ToString());
-                blueSliderDSte.Value = int.Parse(groups[3].ToString());
-                opacitySliderDSte.Value = double.Parse(groups[4].ToString());
+                RedSliderDSte.Value = int.Parse(groups[1].ToString());
+                GreenSliderDSte.Value = int.Parse(groups[2].ToString());
+                BlueSliderDSte.Value = int.Parse(groups[3].ToString());
+                OpacitySliderDSte.Value = double.Parse(groups[4].ToString());
 
             }
 
             UpdateColorDisplayDSte();
 
-            isUpdatingDSte = false;
+            _isUpdatingDSte = false;
         }
 
         private void UpdateColorDisplayDSte()
         {
-            var red = (int)redSliderDSte.Value;
-            var green = (int)greenSliderDSte.Value;
-            var blue = (int)blueSliderDSte.Value;
+            var red = (int)RedSliderDSte.Value;
+            var green = (int)GreenSliderDSte.Value;
+            var blue = (int)BlueSliderDSte.Value;
 
-            colorDSte.Color = Color.FromRgb(red, green, blue);
+            ColorDSte.Color = Color.FromRgb(red, green, blue);
         }
 
         private void CbLockDSte_CheckedChangedDSte(object sender, CheckedChangedEventArgs e)
         {
-            lockedDSte = cbLockDSte.IsChecked;
+            _lockedDSte = CbLockDSte.IsChecked;
         }
     }
 }

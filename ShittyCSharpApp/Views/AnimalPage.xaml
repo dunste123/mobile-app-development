@@ -6,7 +6,7 @@
 
     <StackLayout>
         <Picker VerticalOptions="CenterAndExpand" SelectedIndexChanged="Picker_SelectedIndexChangedDSte" x:Name="ApiDropdownDSte"/>
-        <ImageButton x:Name="imageBtnDSte" Clicked="Button_ClickedDSte" HorizontalOptions="End"/>
+        <ImageButton x:Name="ImageBtnDSte" Clicked="Button_ClickedDSte" HorizontalOptions="CenterAndExpand"/>
 
 
         <Frame Padding="0" CornerRadius="50"
@@ -14,7 +14,7 @@
                HorizontalOptions="Center"
                VerticalOptions="Center"
                IsClippedToBounds="True">
-            <Image Source="" x:Name="animalDSte" Aspect="AspectFit"/>
+            <Image Source="" x:Name="AnimalDSte" Aspect="AspectFit"/>
         </Frame>
 
         <ActivityIndicator x:Name="ActivityDSte" 

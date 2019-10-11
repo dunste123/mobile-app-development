@@ -35,11 +35,11 @@ namespace ShittyCSharpApp.Views
             ApiDropdownDSte.SelectedIndex = 0;
 
             ActivityDSte.SetBinding(ActivityIndicator.IsRunningProperty, "IsLoading");
-            ActivityDSte.BindingContext = animalDSte;
+            ActivityDSte.BindingContext = AnimalDSte;
 
-            imageBtnDSte.Source = ImageSource.FromResource("ShittyCSharpApp.Assets.Img.wood_button.png");
+            ImageBtnDSte.Source = ImageSource.FromResource("ShittyCSharpApp.Assets.Img.wood_button.png");
 
-            animalDSte.Source = ImageSource.FromStream(() => GetImageStreamDSte("https://cdn.duncte123.me/pnXTWOrbbp"));
+            AnimalDSte.Source = ImageSource.FromStream(() => GetImageStreamDSte("https://cdn.duncte123.me/pnXTWOrbbp"));
         }
 
         private async void Button_ClickedDSte(object sender, EventArgs e)
@@ -52,7 +52,7 @@ namespace ShittyCSharpApp.Views
 
             Console.WriteLine(imgUrl);
 
-            animalDSte.Source = ImageSource.FromStream(() => GetImageStreamDSte(imgUrl));
+            AnimalDSte.Source = ImageSource.FromStream(() => GetImageStreamDSte(imgUrl));
         }
 
         private void Picker_SelectedIndexChangedDSte(object sender, EventArgs e)

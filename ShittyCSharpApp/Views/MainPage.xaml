@@ -23,31 +23,31 @@
                 <Button Text="Popup" FontSize="10"
                         Grid.Row="0" Grid.Column="0" Clicked="BtnPopupClickedDSte" />
 
-                <BoxView x:Name="colorDSte" BindingContext="{x:Reference opacitySliderDSte}"
+                <BoxView x:Name="ColorDSte" BindingContext="{x:Reference OpacitySliderDSte}"
                          Grid.Row="1" Grid.Column="0" 
                          Color="Black" Opacity="{Binding Value}" />
 
                 <Entry Text="rgba(0, 0, 0, 1)" TextChanged="ColorTextChangedDSte"
-                       x:Name="rgbaFieldDSte" Grid.Row="2" Grid.Column="0" />
+                       x:Name="RgbaFieldDSte" Grid.Row="2" Grid.Column="0" />
             </Grid>
 
             <Label Text="Lock" />
-            <CheckBox x:Name="cbLockDSte" CheckedChanged="CbLockDSte_CheckedChangedDSte" />
+            <CheckBox x:Name="CbLockDSte" CheckedChanged="CbLockDSte_CheckedChangedDSte" />
 
             <Label Text="Red" />
-            <Slider x:Name="redSliderDSte" ValueChanged="ColorSliderChangeDSte"
+            <Slider x:Name="RedSliderDSte" ValueChanged="ColorSliderChangeDSte"
                     MaximumTrackColor="LightPink" MinimumTrackColor="DeepPink" />
 
             <Label Text="Green" />
-            <Slider x:Name="greenSliderDSte" ValueChanged="ColorSliderChangeDSte"
+            <Slider x:Name="GreenSliderDSte" ValueChanged="ColorSliderChangeDSte"
                     MaximumTrackColor="LightPink" MinimumTrackColor="DeepPink" />
 
             <Label Text="Blue" />
-            <Slider x:Name="blueSliderDSte" ValueChanged="ColorSliderChangeDSte"
+            <Slider x:Name="BlueSliderDSte" ValueChanged="ColorSliderChangeDSte"
                     MaximumTrackColor="LightPink" MinimumTrackColor="DeepPink" />
 
             <Label Text="Opacity" />
-            <Slider x:Name="opacitySliderDSte" ValueChanged="ColorSliderChangeDSte"
+            <Slider x:Name="OpacitySliderDSte" ValueChanged="ColorSliderChangeDSte"
                     Maximum="1" Value="1"
                     MaximumTrackColor="LightPink" MinimumTrackColor="DeepPink" />
         </StackLayout>
