@@ -19,7 +19,7 @@ namespace ShittyCSharpApp.Views.Tabs.Images
             this.Title = "Fill";
 
             this.ImageDSte.Source = ImageSource.FromResource("ShittyCSharpApp.Assets.Img.cat2.jpg");
-            this.ImageDSte.Aspect = Aspect.AspectFill;
+            this.ImageDSte.Aspect = Aspect.Fill;
         }
 	}
 }
