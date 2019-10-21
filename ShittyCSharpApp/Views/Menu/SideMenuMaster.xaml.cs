@@ -6,7 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-
+using ShittyCSharpApp.Views.Tabs.List;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,7 +15,7 @@ namespace ShittyCSharpApp.Views.Menu
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SideMenuMaster : ContentPage
     {
-        public ListView ListView;
+        public readonly ListView ListView;
 
         public SideMenuMaster()
         {
@@ -25,7 +25,7 @@ namespace ShittyCSharpApp.Views.Menu
             ListView = MenuItemsListView;
         }
 
-        class SideMenuMasterViewModel : INotifyPropertyChanged
+        private class SideMenuMasterViewModel : INotifyPropertyChanged
         {
             public ObservableCollection<SideMenuMenuItem> MenuItems { get; set; }
             
@@ -35,7 +35,8 @@ namespace ShittyCSharpApp.Views.Menu
                 {
                     new SideMenuMenuItem { Id = 0, Title = "Color Mixer", TargetType = typeof(MainPage) },
                     new SideMenuMenuItem { Id = 1, Title = "Animals", TargetType = typeof(AnimalPage) },
-                    new SideMenuMenuItem { Id = 2, Title = "Images'n stuff", TargetType = typeof(TabsPage) }
+                    new SideMenuMenuItem { Id = 2, Title = "Images'n stuff", TargetType = typeof(TabsPage) },
+                    new SideMenuMenuItem { Id = 3, Title = "Grouped list", TargetType = typeof(ListGroupPageDSte) }
                 });
             }
             

@@ -7,7 +7,7 @@ namespace ShittyCSharpApp.Views
 {
     public partial class AnimalPage : ContentPage
     {
-        public List<string> ApisDSte { get; } = new List<string> {
+        private List<string> _apisDSte { get; set; } = new List<string> {
             "llama",
             "cat",
             "duck",
@@ -19,6 +19,16 @@ namespace ShittyCSharpApp.Views
             "lizard"
         };
 
+        public List<string> ApisDSte
+        {
+            get => _apisDSte;
+            set
+            {
+                _apisDSte = value;
+                base.OnPropertyChanged();
+            }
+        }
+
         public string SelectedApi { get; set; } = "llama";
 
         public int SelectedApiIndex => this.ApisDSte.IndexOf(this.SelectedApi);
@@ -29,6 +39,8 @@ namespace ShittyCSharpApp.Views
             
             InitializeComponent();
 
+            LoadApisDSte();
+
             this.Title = "Animals";
 
             this.ActivityDSte.SetBinding(ActivityIndicator.IsRunningProperty, "IsLoading");
@@ -37,6 +49,15 @@ namespace ShittyCSharpApp.Views
             this.ImageBtnDSte.Source = ImageSource.FromResource("ShittyCSharpApp.Assets.Img.wood_button.png");
             
             LoadImageDSte("https://cdn.duncte123.me/pnXTWOrbbp");
+        }
+
+        private async void LoadApisDSte()
+        {
+            var response = await WebStuffDSte.GetStringDSte("https://apis.duncte123.me/animal");
+            var obj = JObject.Parse(response);
+            var animals = obj.Value<JArray>("data").ToObject<List<string>>();
+
+            ApisDSte = animals;
         }
 
         private async void Button_ClickedDSte(object sender, EventArgs e)

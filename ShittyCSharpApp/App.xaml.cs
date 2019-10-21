@@ -1,8 +1,6 @@
-﻿using System;
+﻿using ShittyCSharpApp.Views.Menu;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using ShittyCSharpApp.Views;
-using ShittyCSharpApp.Views.Menu;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace ShittyCSharpApp
@@ -16,6 +14,8 @@ namespace ShittyCSharpApp
             WebStuffDSte.InitDSte();
 
             MainPage = new SideMenu();
+            
+//            NavigationPage.SetHasBackButton(MainPage, false);
         }
 
         protected override void OnStart()

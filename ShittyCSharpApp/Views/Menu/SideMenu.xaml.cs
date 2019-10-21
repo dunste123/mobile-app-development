@@ -18,6 +18,11 @@ namespace ShittyCSharpApp.Views.Menu
             MasterPage.ListView.ItemSelected += ListView_ItemSelected;
         }
 
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
+
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = e.SelectedItem as SideMenuMenuItem;
