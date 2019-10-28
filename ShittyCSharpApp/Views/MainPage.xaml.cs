@@ -13,7 +13,7 @@ namespace ShittyCSharpApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
-        private const string RegexDSte = @"rgba\(([0-9]+), ([0-9]+), ([0-9]+), ([0-9\.]+)\)";
+        private const string RegexDSte = @"rgba\(([0-9]{1,3}), ([0-9]{1,3}), ([0-9]{1,3}), ([0-9\.]{1,3})\)";
         private bool _isUpdatingDSte = false;
         private bool _lockedDSte = false;
 
@@ -40,18 +40,24 @@ namespace ShittyCSharpApp.Views
                 return;
             }
 
-            _isUpdatingDSte = true;
+            Task.Run(() =>
+            {
+                _isUpdatingDSte = true;
 
-            var red = (int)RedSliderDSte.Value;
-            var green = (int)GreenSliderDSte.Value;
-            var blue = (int)BlueSliderDSte.Value;
-            var op = OpacitySliderDSte.Value;
+                var red = (int)RedSliderDSte.Value;
+                var green = (int)GreenSliderDSte.Value;
+                var blue = (int)BlueSliderDSte.Value;
+                var op = OpacitySliderDSte.Value;
+                
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    RgbaFieldDSte.Text = $"rgba({red}, {green}, {blue}, {op})";
 
-            RgbaFieldDSte.Text = $"rgba({red}, {green}, {blue}, {op})";
+                    UpdateColorDisplayDSte();
+                });
 
-            UpdateColorDisplayDSte();
-
-            _isUpdatingDSte = false;
+                _isUpdatingDSte = false;
+            });
         }
 
         private void ColorTextChangedDSte(object sender, EventArgs e)
@@ -61,25 +67,28 @@ namespace ShittyCSharpApp.Views
                 return;
             }
 
-            _isUpdatingDSte = true;
-
-            var value = RgbaFieldDSte.Text;
-
-            if (Regex.IsMatch(value, RegexDSte))
+            Task.Run(() =>
             {
-                var match = Regex.Match(value, RegexDSte);
-                var groups = match.Groups;
+                _isUpdatingDSte = true;
 
-                RedSliderDSte.Value = int.Parse(groups[1].ToString());
-                GreenSliderDSte.Value = int.Parse(groups[2].ToString());
-                BlueSliderDSte.Value = int.Parse(groups[3].ToString());
-                OpacitySliderDSte.Value = double.Parse(groups[4].ToString());
+                var value = RgbaFieldDSte.Text;
 
-            }
+                if (Regex.IsMatch(value, RegexDSte))
+                {
+                    var match = Regex.Match(value, RegexDSte);
+                    var groups = match.Groups;
 
-            UpdateColorDisplayDSte();
+                    RedSliderDSte.Value = int.Parse(groups[1].ToString());
+                    GreenSliderDSte.Value = int.Parse(groups[2].ToString());
+                    BlueSliderDSte.Value = int.Parse(groups[3].ToString());
+                    OpacitySliderDSte.Value = double.Parse(groups[4].ToString());
 
-            _isUpdatingDSte = false;
+                }
+
+                Device.BeginInvokeOnMainThread(UpdateColorDisplayDSte);
+
+                _isUpdatingDSte = false;
+            });
         }
 
         private void UpdateColorDisplayDSte()

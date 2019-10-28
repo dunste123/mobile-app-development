@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,9 +10,10 @@ namespace ShittyCSharpApp.Views.Tabs.List
     public partial class ListGroupPageDSte : ContentPage
     {
         private List<PersonList> _listOfPeople;
+        private List<PersonList> _listOfPeopleDisplay;
         public List<PersonList> ListOfPeople { 
-            get => _listOfPeople;
-            set { _listOfPeople = value; base.OnPropertyChanged(); }
+            get => _listOfPeopleDisplay;
+            set { _listOfPeopleDisplay = value; base.OnPropertyChanged(); }
         }
 
         public ListGroupPageDSte()
@@ -46,6 +48,7 @@ namespace ShittyCSharpApp.Views.Tabs.List
                 jList
             };
 
+            _listOfPeople = list;
             ListOfPeople = list;
         }
 
@@ -67,6 +70,13 @@ namespace ShittyCSharpApp.Views.Tabs.List
         {
             public string Heading { get; set; }
             public List<Person> Persons => this;
+
+            public PersonList Clone()
+            {
+                var temp = new PersonList {Heading = this.Heading};
+                temp.AddRange(this);
+                return temp;
+            }
         }
 
         public class Person
@@ -74,6 +84,44 @@ namespace ShittyCSharpApp.Views.Tabs.List
             public string FirstName { get; set; }
             public string LastName { get; set; }
             public string DisplayName => $"{LastName}, {FirstName}";
+        }
+
+        private void SearchBar_OnTextChangedDSte(object sender, TextChangedEventArgs e)
+        {
+            Task.Run(() =>
+            {
+                var text = e.NewTextValue;
+
+                if (String.IsNullOrEmpty(text))
+                {
+                    ListOfPeople = _listOfPeople;
+                    return;
+                }
+
+                var tempList = new List<PersonList>();
+            
+                foreach  (var pl in _listOfPeople)
+                {
+                    var personListTemp = pl.Clone();
+                
+                    foreach (var p in pl)
+                    {
+                        if (!p.FirstName.ToLower().Contains(text.ToLower()) &&
+                            !p.LastName.ToLower().Contains(text.ToLower()))
+                        {
+                            personListTemp.Remove(p);
+                        }
+                    }
+
+                    if (personListTemp.Count > 0)
+                    {
+                        tempList.Add(personListTemp);
+                    }
+                }
+
+                ListOfPeople = tempList;
+                base.OnPropertyChanged();
+            });
         }
     }
 }

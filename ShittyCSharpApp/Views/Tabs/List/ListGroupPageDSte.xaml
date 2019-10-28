@@ -5,6 +5,7 @@
              x:Class="ShittyCSharpApp.Views.Tabs.List.ListGroupPageDSte">
     <ContentPage.Content>
         <StackLayout Padding="20">
+            <SearchBar Placeholder="Search items..." TextChanged="SearchBar_OnTextChangedDSte" />
             <ListView ItemsSource="{Binding ListOfPeople}"
                       GroupShortNameBinding="{Binding Heading}"
                       GroupDisplayBinding="{Binding Heading}"

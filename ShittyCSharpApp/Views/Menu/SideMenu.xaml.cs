@@ -29,8 +29,6 @@ namespace ShittyCSharpApp.Views.Menu
             if (item == null)
                 return;
 
-            Console.WriteLine(item.TargetType);
-
             var page = (Page)Activator.CreateInstance(item.TargetType);
             page.Title = item.Title;
 
