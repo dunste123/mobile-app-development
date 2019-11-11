@@ -20,7 +20,7 @@ namespace ShittyCSharpApp.Views.Tabs.List
 
             ListImagesDSte.ItemsSource = new[] {
                 new ImageDataSourceDSte { Text = "Hello", Detail = "World", Image = "https://placekitten.com/g/400/400" },
-                new ImageDataSourceDSte { Text = "Tomatoes", Detail = "Color: Red", Image = "https://placekitten.com/400/400?image=3" }
+                new ImageDataSourceDSte { Text = "Tomatoes", Detail = "Color: Red", Image = "https://placekitten.com/400/400?image=4" }
             };
 
             ListCustomDSte.ItemsSource = new[] {

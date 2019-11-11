@@ -26,11 +26,7 @@ namespace ShittyCSharpApp.Views
 
         private async void BtnPopupClickedDSte(object sender, EventArgs e)
         {
-            var ret = await DisplayAlert("Would you look at that", "It's an alert", "Ok", "Cancel");
-
-#pragma warning disable CS4014
-            DisplayAlert("Result", ret ? "You pressed Ok" : "You pressed Cancel", "Ok");
-#pragma warning restore CS4014
+            await Navigation.PushModalAsync(new FuckingPopUpPage());
         }
 
         private void ColorSliderChangeDSte(object sender, EventArgs e)

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -25,15 +20,15 @@ namespace ShittyCSharpApp.Views.Menu
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var item = e.SelectedItem as SideMenuMenuItem;
-            if (item == null)
+            if (!(e.SelectedItem is SideMenuMenuItem item))
+            {
                 return;
+            }
 
             var page = (Page)Activator.CreateInstance(item.TargetType);
             page.Title = item.Title;
 
             Detail = new NavigationPage(page);
-            //Detail = page;
             IsPresented = false;
 
             MasterPage.ListView.SelectedItem = null;

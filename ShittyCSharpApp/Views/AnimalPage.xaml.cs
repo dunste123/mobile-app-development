@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using Xamarin.Forms;
 
@@ -30,8 +31,15 @@ namespace ShittyCSharpApp.Views
         }
 
         public string SelectedApi { get; set; } = "llama";
-
-        public int SelectedApiIndex => this.ApisDSte.IndexOf(this.SelectedApi);
+        
+        // ReSharper disable ArrangeAccessorOwnerBody
+        public int SelectedApiIndex
+        {
+            get
+            {
+                return this.ApisDSte.IndexOf(this.SelectedApi);
+            }
+        }
 
         public AnimalPage()
         {
@@ -51,28 +59,38 @@ namespace ShittyCSharpApp.Views
             LoadImageDSte("https://cdn.duncte123.me/pnXTWOrbbp");
         }
 
-        private async void LoadApisDSte()
+        private void LoadApisDSte()
         {
-            var response = await WebStuffDSte.GetStringDSte("https://apis.duncte123.me/animal");
-            var obj = JObject.Parse(response);
-            var animals = obj.Value<JArray>("data").ToObject<List<string>>();
+            Task.Run(async () =>
+            {
+                var response = await WebStuffDSte.GetStringDSte("https://apis.duncte123.me/animal");
+                var obj = JObject.Parse(response);
+                var animals = obj.Value<JArray>("data").ToObject<List<string>>();
 
-            ApisDSte = animals;
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    ApisDSte = animals;
+                    ApiDropdownDSte.SelectedIndex = this.ApisDSte.IndexOf(this.SelectedApi);
+                });
+            });
         }
 
-        private async void Button_ClickedDSte(object sender, EventArgs e)
+        private void Button_ClickedDSte(object sender, EventArgs e)
         {
-            var apiEndpoint = $"https://apis.duncte123.me/animal/{SelectedApi}";
+            Task.Run(async () =>
+            {
+                var apiEndpoint = $"https://apis.duncte123.me/animal/{SelectedApi}";
             
-            Console.WriteLine(apiEndpoint);
+                Console.WriteLine(apiEndpoint);
 
-            var response = await WebStuffDSte.GetStringDSte(apiEndpoint);
-            var obj = JObject.Parse(response);
-            var imgUrl = obj.SelectToken("data.file").ToString();
+                var response = await WebStuffDSte.GetStringDSte(apiEndpoint);
+                var obj = JObject.Parse(response);
+                var imgUrl = obj.SelectToken("data.file").ToString();
 
-            Console.WriteLine(imgUrl);
+                Console.WriteLine(imgUrl);
 
-            this.LoadImageDSte(imgUrl);
+                this.LoadImageDSte(imgUrl);
+            });
         }
 
         private void Picker_SelectedIndexChangedDSte(object sender, EventArgs e)
@@ -86,7 +104,10 @@ namespace ShittyCSharpApp.Views
         private async void LoadImageDSte(string url)
         {
             var stream = await WebStuffDSte.GetStreamDSte(url);
-            this.AnimalDSte.Source = ImageSource.FromStream(() => stream);
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                this.AnimalDSte.Source = ImageSource.FromStream(() => stream);
+            });
         }
     }
 }

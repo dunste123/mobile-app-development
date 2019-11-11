@@ -9,7 +9,7 @@
               HasUnevenRows="true"
               ItemsSource="{Binding MenuItems}">
         <!--Might use this in the future-->
-      <!--<ListView.Header>
+      <ListView.Header>
         <Grid BackgroundColor="#03A9F4">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -25,10 +25,10 @@
           <Label
               Grid.Column="1"
               Grid.Row="2"
-              Text="AppName"
+              Text="Ok Boomer"
               Style="{DynamicResource SubtitleStyle}"/>
         </Grid>
-      </ListView.Header>-->
+      </ListView.Header>
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
@@ -36,7 +36,7 @@
               <Label VerticalOptions="FillAndExpand" 
                     VerticalTextAlignment="Center" 
                     Text="{Binding Title}" 
-                    FontSize="24"/>
+                    FontSize="20"/>
             </StackLayout>
           </ViewCell>
         </DataTemplate>
