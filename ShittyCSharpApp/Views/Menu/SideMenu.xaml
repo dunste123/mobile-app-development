@@ -7,6 +7,12 @@
   <MasterDetailPage.Master>
     <menu:SideMenuMaster x:Name="MasterPage" />
   </MasterDetailPage.Master>
+  <MasterDetailPage.ToolbarItems>
+    <ToolbarItem Text="Example Item"
+                 Order="Primary"
+                 Clicked="MenuItemTExtClicked"
+                 Priority="0" />
+  </MasterDetailPage.ToolbarItems>
   <MasterDetailPage.Detail>
     <NavigationPage>
       <x:Arguments>

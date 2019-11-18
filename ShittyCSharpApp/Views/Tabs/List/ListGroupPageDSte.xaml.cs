@@ -21,6 +21,11 @@ namespace ShittyCSharpApp.Views.Tabs.List
             this.BindingContext = this;
             InitializeComponent();
             
+            listViewDSte.RefreshCommand = new Command(async () => {
+                await Task.Delay(TimeSpan.FromSeconds(1.5));
+                listViewDSte.IsRefreshing = false;
+            });
+            
             var sList = new PersonList
             {
                 new Person { FirstName = "Sally", LastName = "Sampson" },

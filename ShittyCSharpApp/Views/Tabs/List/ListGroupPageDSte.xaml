@@ -10,6 +10,8 @@
                       GroupShortNameBinding="{Binding Heading}"
                       GroupDisplayBinding="{Binding Heading}"
                       ItemSelected="OnItemSelectedDSte"
+                      x:Name="listViewDSte"
+                      IsPullToRefreshEnabled="True"
                       IsGroupingEnabled="true">
                 <!--<ListView.GroupHeaderTemplate>
                     <DataTemplate>

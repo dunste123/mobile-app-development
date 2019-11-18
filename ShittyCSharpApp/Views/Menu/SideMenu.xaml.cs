@@ -33,5 +33,10 @@ namespace ShittyCSharpApp.Views.Menu
 
             MasterPage.ListView.SelectedItem = null;
         }
+
+        private void MenuItemTExtClicked(object sender, EventArgs e)
+        {
+            Device.OpenUri(new Uri("https://duncte123.com/"));
+        }
     }
 }

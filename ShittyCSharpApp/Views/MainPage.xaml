@@ -50,6 +50,8 @@
             <Slider x:Name="OpacitySliderDSte" ValueChanged="ColorSliderChangeDSte"
                     Maximum="1" Value="1"
                     MaximumTrackColor="LightPink" MinimumTrackColor="DeepPink" />
+                    
+            <Editor Text="I am an Editor" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
